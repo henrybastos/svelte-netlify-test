@@ -18,7 +18,7 @@
    $: savingPercentage = capPercentage( ($SavingsBalance / $TotalBalance) || 0);
    $: incomePercentage = capPercentage( ($IncomesBalance / $TotalBalance) || 0);
    
-   let local_storage;
+   let local_storage = {"items":{"expenses":[],"savings":[],"incomes":[{"title":"asdsa","amount":12314,"category":"investimentos"}]},"total_balance":0,"expenses_balance":0,"savings_balance":0,"incomes_balance":0};
    
    function capPercentage (_value) {
       if (_value !== Infinity && _value !== -Infinity && _value !== undefined && _value !== null) {
@@ -45,14 +45,14 @@
       TotalBalance.set($ExpensesBalance + $IncomesBalance + $SavingsBalance);
    }
 
-   async function addItem (item, operation) {200
-      await fetch('/api/add-item', {
-         method: 'POST',
-         body: JSON.stringify({ item: item, operation: operation })
-      });
+   async function addItem (item, operation) {
+      // await fetch('/api/add-item', {
+      //    method: 'POST',
+      //    body: JSON.stringify({ item: item, operation: operation })
+      // });
 
-      let loadResponse = await fetch('/api/load-items');
-      local_storage = await loadResponse.json();
+      // let loadResponse = await fetch('/api/load-items');
+      // local_storage = await loadResponse.json();
 
       switch (operation) {
          case 'expense':
